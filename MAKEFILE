@@ -1,7 +1,7 @@
 BIN = final_executable
 
 ${BIN}: main.o trielib.o veclib.o dict.txt
-	gcc main.o trielib.o veclib.o -o $@
+	gcc main.o trielib.o veclib.o -o $@ -lncurses
 
 dict.txt: dictconverter.out dictionary.txt
 	./dictconverter.out dictionary.txt dict.txt
