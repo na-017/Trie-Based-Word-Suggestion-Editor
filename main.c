@@ -9,7 +9,7 @@ int main(){
     
     //Open dictionary.txt in read mode and insert each word processing each line
 
-    FILE *fin = (FILE *)fopen("dictionary.txt" , "r");
+    FILE *fin = (FILE *)fopen("dict.txt" , "r");
     char word[100];
     while(fgets(word , 99 , fin) != NULL){
         if(word[strlen(word)-1] == '\n'){
