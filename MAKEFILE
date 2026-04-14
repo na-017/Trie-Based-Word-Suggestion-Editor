@@ -1,0 +1,23 @@
+BIN = final_executable
+
+${BIN}: main.o trielib.o veclib.o dict.txt
+	gcc main.o trielib.o veclib.o -o $@
+
+dict.txt: dictconverter.out dictionary.txt
+	./dictconverter.out dictionary.txt dict.txt
+
+dictconverter.out: dictconverter.c
+	gcc $< -o $@
+
+main.o: main.c veclib.h trielib.h 
+	gcc -c $<
+
+trielib.o: trielib.c veclib.h trielib.h 
+	gcc -c $<
+
+veclib.o: veclib.c veclib.h
+	gcc -c $< 
+
+.PHONY: clean
+clean:
+	rm -f *.o *.out dict.txt ${BIN}
