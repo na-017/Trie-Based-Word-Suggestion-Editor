@@ -60,7 +60,6 @@ int main(){
     while(1){
 
         if(current_mode == 3){
-
             mvwprintw(bg , 1 , 1 , "Search Mode\n");
             box(bg, 0, 0);
             box(search_win , 0 , 0);
@@ -92,15 +91,14 @@ int main(){
             box(bg, 0, 0);
             wrefresh(bg);
         }
-        else if(ch == 27){
-            delwin(bg);
-            wrefresh(bg);
-            return 0;
-        }
         else if(ch == KEY_F(1)){
             // inserting a new word to the trie
             current_mode = 1;
-
+            
+            if(search_win!=NULL){
+                delwin(search_win);
+                search_win=NULL;
+            }
             werase(bg);
             box(bg, 0, 0);
             wrefresh(bg);
@@ -114,6 +112,10 @@ int main(){
             // deleting a word from trie
             current_mode = 2;
 
+            if(search_win!=NULL){
+                delwin(search_win);
+                search_win=NULL;
+            }
             werase(bg);
             box(bg, 0, 0);
             wrefresh(bg);
@@ -127,12 +129,13 @@ int main(){
         }
         else if(ch == KEY_F(3)){
             //searching
-
+            buff_m3[0]='\0';
             current_mode = 3;
 
             werase(bg);
             box(bg, 0, 0);
             wrefresh(bg);
+            search_win = newwin(20, (max_x*39)/100, 3, (max_x*60)/100);
             touchwin(search_win);
             wrefresh(search_win);
 
