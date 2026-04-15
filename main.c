@@ -87,7 +87,11 @@ int main(){
             int h, w;
             getmaxyx(bg, h, w);
 
-            mvwprintw(bg , 0.1*h , 0.4*w , "Dictionary Statistics\n");
+            mvwprintw(bg , 0.1*h , 0.1*w , "Dictionary Statistics\n");
+            mvwprintw(bg , 0.1*h , 0.35*w , "F1: Insert\n");
+            mvwprintw(bg , 0.1*h , 0.5*w , "F2: Delete\n");
+            mvwprintw(bg , 0.1*h , 0.65*w , "F3: Search\n");
+            mvwprintw(bg , 0.1*h , 0.8*w , "F4: Statistics\n");
             mvwprintw(bg, h * 0.2, w * 0.1, "Word Count:   %d", wordcount(root));
             mvwprintw(bg, h * 0.3, w * 0.1, "Max Word Length:    %d", max_depth(root)-1);
             mvwprintw(bg, h * 0.4, w * 0.1, "Data Occupied By Nodes:   %.3f MB", (float)node_count(root)*(float)sizeof(TrieNode)/(1024.0f * 1024.0f));
