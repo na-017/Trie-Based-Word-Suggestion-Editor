@@ -40,13 +40,12 @@ int main(){
     box(bg, 0, 0);    
     wrefresh(bg);
 
-    WINDOW *search_win = newwin(20, (max_x*39)/100, 3, (max_x*60)/100);
-    
+    WINDOW *search_win;
     char buff[50] = {0};
     char buff_m1[50] = {0};
     char buff_m2[50] = {0};
     char buff_m3[50] = {0};
-    int current_mode=3;
+    int current_mode=4;
 
     int selected_index = 0;
     int scroll_offset = 0;
@@ -60,6 +59,7 @@ int main(){
     while(1){
 
         if(current_mode == 3){
+    
             mvwprintw(bg , 1 , 1 , "Search Mode\n");
             box(bg, 0, 0);
             box(search_win , 0 , 0);
@@ -82,7 +82,28 @@ int main(){
             wrefresh(bg);
 
         }
+        else if(current_mode == 4){
+            int h, w;
+            getmaxyx(bg, h, w);
 
+            mvwprintw(bg , 0.1*h , 0.4*w , "Dictionary Statistics\n");
+            mvwprintw(bg, h * 0.2, w * 0.1, "Word Count:   %d", wordcount(root));
+            mvwprintw(bg, h * 0.3, w * 0.1, "Max Word Length:    %d", max_depth(root)-1);
+            mvwprintw(bg, h * 0.4, w * 0.1, "Data Occupied By Nodes:   %.3f MB", (float)node_count(root)*(float)sizeof(TrieNode)/(1024.0f * 1024.0f));
+            mvwprintw(bg, h * 0.5, w * 0.1, "Alpabetical Distribution:");
+            int distri[26];
+            alpha_distri(root, distri);
+            for (int i=0; i<26; i++) {
+                int col = (i%3);
+                int row = (i/3);
+                int y = (h*0.6) + row;
+                int x = (w*0.1) + (col*(w/3));
+        
+                mvwprintw(bg, y, x, "%c: %d", 'a' + i, distri[i]);
+            }
+            box(bg, 0, 0);
+            wrefresh(bg);
+        }
         int ch = getch();
         if(ch == KEY_RESIZE){
             delwin(bg);
@@ -153,6 +174,17 @@ int main(){
             rno = 4;
             cno = 1;
 
+        }
+        else if(ch == KEY_F(4)){
+            current_mode = 4;
+            
+            if(search_win!=NULL){
+                delwin(search_win);
+                search_win=NULL;
+            }
+            werase(bg);
+            box(bg, 0, 0);
+            wrefresh(bg);      
         }
         else if(ch >= 'a' && ch <= 'z'){
             if(current_mode == 1){
