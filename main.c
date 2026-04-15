@@ -83,6 +83,7 @@ int main(){
 
         }
         else if(current_mode == 4){
+            
             int h, w;
             getmaxyx(bg, h, w);
 
@@ -103,6 +104,7 @@ int main(){
             }
             box(bg, 0, 0);
             wrefresh(bg);
+
         }
         int ch = getch();
         if(ch == KEY_RESIZE){
