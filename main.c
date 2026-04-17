@@ -118,20 +118,21 @@ int main(){
             getmaxyx(bg, h, w);
 
             mvwprintw(bg , 0.1*h , 0.1*w , "Dictionary Statistics\n");
-            mvwprintw(bg , 0.1*h , 0.35*w , "F1: Insert\n");
-            mvwprintw(bg , 0.1*h , 0.5*w , "F2: Delete\n");
-            mvwprintw(bg , 0.1*h , 0.65*w , "F3: Search\n");
-            mvwprintw(bg , 0.1*h , 0.8*w , "F4: Statistics\n");
-            mvwprintw(bg, h * 0.2, w * 0.1, "Word Count:   %d", wordcount(root));
-            mvwprintw(bg, h * 0.3, w * 0.1, "Max Word Length:    %d", max_depth(root)-1);
-            mvwprintw(bg, h * 0.4, w * 0.1, "Data Occupied By Nodes:   %.3f MB", (float)node_count(root)*(float)sizeof(TrieNode)/(1024.0f * 1024.0f));
-            mvwprintw(bg, h * 0.5, w * 0.1, "Alphabetical Distribution:");
+            mvwprintw(bg , 0.2*h , 0.1*w , "F1: Insert\n");
+            mvwprintw(bg , 0.2*h , 0.25*w , "F2: Delete\n");
+            mvwprintw(bg , 0.2*h , 0.4*w , "F3: Search\n");
+            mvwprintw(bg , 0.2*h , 0.55*w , "F4: Statistics\n");
+            mvwprintw(bg , 0.2*h , 0.7*w , "F5: Suggestion\n");
+            mvwprintw(bg, h * 0.3, w * 0.1, "Word Count:   %d", wordcount(root));
+            mvwprintw(bg, h * 0.4, w * 0.1, "Max Word Length:    %d", max_depth(root)-1);
+            mvwprintw(bg, h * 0.5, w * 0.1, "Data Occupied By Nodes:   %.3f MB", (float)node_count(root)*(float)sizeof(TrieNode)/(1024.0f * 1024.0f));
+            mvwprintw(bg, h * 0.6, w * 0.1, "Alphabetical Distribution:");
             int distri[26];
             alpha_distri(root, distri);
             for (int i=0; i<26; i++) {
                 int col = (i%3);
                 int row = (i/3);
-                int y = (h*0.6) + row;
+                int y = (h*0.7) + row;
                 int x = (w*0.1) + (col*(w/3));
         
                 mvwprintw(bg, y, x, "%c: %d", 'a' + i, distri[i]);
