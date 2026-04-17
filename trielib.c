@@ -231,12 +231,11 @@ vector* word_correction(TrieNode* root, char* word, int dist){
     }
 
     char curr_word[MAX_WORD_LENGTH];
-    for(int i=0;i<26;i++){
-        if(root->next_arr[i]!=NULL){
-            curr_word[0]='a'+i;
-            rec_word_correction(v, root->next_arr[i], word, len, curr_word, row, dist, 1);
-        }
+    if(root->next_arr[word[0]-'a']!=NULL){
+        curr_word[0]=word[0];
+        rec_word_correction(v, root->next_arr[word[0]-'a'], word, len, curr_word, row, dist, 1);
     }
+    
     return v;
 }
 
