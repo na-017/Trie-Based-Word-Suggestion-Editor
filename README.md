@@ -16,7 +16,8 @@ Upon running the final executable you will sent to a Terminal Interface containi
     Here you will be able to remove any words your regard as not needed. Before removing a word you will be prompted to verify the change.
 
 - F3: Search Mode
-    This is the prefix search mode. Here upon typing a part of the word you will be recommended words with the typed part as a prefix.
+    This is the prefix search mode. Here upon typing a part of the word you will be recommended words with the typed part as a prefix, in alphabetical order.
+  Note: To prevent UI overflow, suggestions are capped at a maximum of 15 words, sorted alphabetically
 
 - F4: Statistics Page:
     This page contains various statistics such as 
@@ -26,12 +27,13 @@ Upon running the final executable you will sent to a Terminal Interface containi
         - Total Memory Occupied by All the Nodes in the Trie
 
 - F5: Word Suggestion System
-    Here if your word is correct this system will recognize this and display if it is correct. Otherwise it will instead display the words closed to this which are correct according to the dictionary.
+    Here if your word is correct this system will recognize this and display if it is correct. Otherwise it will instead display the words closest to this which are correct according to the dictionary.
+  Note: To prevent UI overflow, suggestions are capped at a maximum of 15 words, sorted alphabetically
 
 To exit the Terminal Interface please use Ctrl C.
 
-Current Issues In the Project:
- - 
+Current Limitation(s):
+ -To optimize memory usage, the program only buffers the current word being typed rather than storing the entire text history. Whenever a user enters a space, tab, or punctuation mark, the program registers the end of the word and clears the buffer. Because of this design choice, users can only backspace within the active word and cannot go back to edit previously completed words.
 
 I hope you found our project useful.
 
