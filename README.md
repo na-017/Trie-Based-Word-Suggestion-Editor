@@ -1,4 +1,6 @@
-WELCOME TO OUR PROJECT
+<div align="center">
+  **WELCOME TO OUR PROJECT**
+</div>
 
 This project is about a word suggestion editor.
 We have used a Trie-Retrival System to store and access words which have been loaded from a dictionary(If you wish to use a different dictionary, move your preferred dictionary to the project directory and rename it as directory.txt). Currently we only support lowercase letters so please do make sure to type only lowercase letters. Also if your dictionary has any uppercase letters they will be converted to lowercase and any words with special characters will be ignored.
