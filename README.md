@@ -1,5 +1,5 @@
 <div align="center">
-  **WELCOME TO OUR PROJECT**
+  <strong>WELCOME TO OUR PROJECT</strong><br>
 </div>
 
 This project is about a word suggestion editor.
