@@ -34,6 +34,7 @@ To exit the Terminal Interface please use Ctrl C.
 
 Current Limitation(s):
  -To optimize memory usage, the program only buffers the current word being typed rather than storing the entire text history. Whenever a user enters a space, tab, or punctuation mark, the program registers the end of the word and clears the buffer. Because of this design choice, users can only backspace within the active word and cannot go back to edit previously completed words.
+ -Also as the longest word in english is 45 letters long the buffer storing the letters has a maximum size of 50.
 
 I hope you found our project useful.
 
