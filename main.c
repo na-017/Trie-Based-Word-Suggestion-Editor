@@ -4,7 +4,7 @@
 #include <ncurses.h>
 #include <string.h>
 
-int main(){
+int main(){ 
     TrieNode* root=create_node();
     
     //Open dictionary.txt in read mode and insert each word processing each line
@@ -587,6 +587,7 @@ int main(){
 
             if(current_mode == 1){
                 int temp_sz = strlen(buff_m1);
+                if(temp_sz == 0) continue;
                 buff_m1[temp_sz-1] = '\0';
                 mvwprintw(bg , 4 , 1 , "%s\n" , buff_m1);
                 box(bg, 0, 0);
@@ -594,6 +595,7 @@ int main(){
             }
             else if(current_mode == 2){
                 int temp_sz = strlen(buff_m2);
+                if(temp_sz == 0) continue;
                 buff_m2[temp_sz-1] = '\0';
                 mvwprintw(bg , 4 , 1 , "%s\n" , buff_m2);
                 box(bg, 0, 0);
@@ -601,10 +603,21 @@ int main(){
             }
             else if(current_mode == 3){
                 int temp_sz = strlen(buff_m3);
+                if(temp_sz == 0) continue;
                 buff_m3[temp_sz-1] = '\0';
-                // mvwprintw(bg , 4 , 1 , "%s\n" , buff_m3);
-                // box(bg, 0, 0);
-                // wrefresh(bg);
+
+                if(strlen(buff_m3) == 0){   
+                    mvwprintw(bg , rno , cno , " ");  
+                    box(bg, 0, 0);
+                    wrefresh(bg);
+
+                    werase(suggest_win);
+                    mvwprintw(suggest_win, 1, 1, "Suggestions:\n");
+                    box(suggest_win, 0, 0);
+                    touchwin(suggest_win);
+                    wrefresh(suggest_win);
+                    continue;
+                }
 
                 vector *results = prefix_search(root , buff_m3);
 
@@ -687,7 +700,21 @@ int main(){
             }
             else if(current_mode == 5){
                 int temp_sz = strlen(buff_m5);
+                if(temp_sz == 0) continue;
                 buff_m5[temp_sz-1] = '\0';
+
+                if(strlen(buff_m5) == 0){   
+                    mvwprintw(bg , srno , scno , " ");  
+                    box(bg, 0, 0);
+                    wrefresh(bg);
+
+                    werase(suggest_win);
+                    mvwprintw(suggest_win, 1, 1, "Suggestions:\n");
+                    box(suggest_win, 0, 0);
+                    touchwin(suggest_win);
+                    wrefresh(suggest_win);
+                    continue;
+                }
 
                 mvwprintw(bg , 3 , 1 , "Typing in Correct Word Suggestion Mode...\n");
                 box(bg, 0, 0);
